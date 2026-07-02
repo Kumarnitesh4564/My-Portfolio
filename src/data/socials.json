@@ -1,0 +1,27 @@
+{
+  "github": {
+    "label": "GitHub",
+    "username": "nitesh-kumar",
+    "url": "https://github.com/"
+  },
+  "linkedin": {
+    "label": "LinkedIn",
+    "username": "Nitesh Kumar",
+    "url": "https://linkedin.com/"
+  },
+  "leetcode": {
+    "label": "LeetCode",
+    "username": "nitesh",
+    "url": "https://leetcode.com/"
+  },
+  "gfg": {
+    "label": "GeeksforGeeks",
+    "username": "nitesh",
+    "url": "https://geeksforgeeks.org/"
+  },
+  "codeforces": {
+    "label": "Codeforces",
+    "username": "nitesh",
+    "url": "https://codeforces.com/"
+  }
+}

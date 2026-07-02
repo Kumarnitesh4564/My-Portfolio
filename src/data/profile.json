@@ -1,0 +1,19 @@
+{
+  "name": "Nitesh Kumar",
+  "role": "Full Stack Developer",
+  "headline": "MERN Stack Developer",
+  "tags": [
+    "Problem Solver",
+    "Competitive Programmer",
+    "Open Source Learner"
+  ],
+  "email": "nitesh@example.com",
+  "resumeUrl": "/resume.pdf",
+  "location": "Pune, India",
+  "about": [
+    "Hi, I'm Nitesh Kumar, a third-year B.E. Electronics and Telecommunication Engineering student at PDEA's College of Engineering, Pune under Savitribai Phule Pune University.",
+    "I am passionate about Full Stack Web Development, Data Structures & Algorithms, and building scalable web applications that solve real-world problems.",
+    "I enjoy solving challenging programming problems, learning modern technologies, and continuously improving my software engineering skills.",
+    "Currently, I am looking for Software Development or Full Stack Development Internship opportunities where I can contribute while learning from experienced engineers."
+  ]
+}

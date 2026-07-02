@@ -1,0 +1,4 @@
+import { FiGithub, FiLinkedin, FiMail, FiSend } from 'react-icons/fi';
+export function Contact({ socials, profile }: { socials: Record<string, { url: string }>; profile: { email: string } }) {
+  return <section id='contact' className='section contact'><div className='section__heading'><span>Reach out</span><h2>Contact</h2></div><div className='contact-grid'><form className='glass contact-form'><div className='field-row'><input placeholder='Name' /><input placeholder='Email' type='email' /></div><input placeholder='Subject' /><textarea placeholder='Message' rows={6} /><button type='button' className='cta primary'><FiSend /> Send Message</button></form><aside className='glass contact-links'><a href={socials.github.url}><FiGithub /> Github</a><a href={socials.linkedin.url}><FiLinkedin /> LinkedIn</a><a href={'mailto:' + profile.email}><FiMail /> Email</a></aside></div></section>;
+}

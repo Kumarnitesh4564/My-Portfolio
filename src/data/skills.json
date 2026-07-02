@@ -1,0 +1,62 @@
+{
+  "languages": [
+    "C++",
+    "JavaScript",
+    "SQL",
+    "HTML",
+    "CSS"
+  ],
+  "frontend": [
+    "React.js",
+    "HTML5",
+    "CSS3",
+    "Tailwind CSS",
+    "Responsive Web Design"
+  ],
+  "backend": [
+    "Node.js",
+    "Express.js",
+    "REST APIs"
+  ],
+  "database": [
+    "MongoDB",
+    "SQL"
+  ],
+  "dsa": [
+    "Arrays",
+    "Strings",
+    "Recursion",
+    "Dynamic Programming",
+    "Trees",
+    "Graphs",
+    "Sliding Window",
+    "Two Pointers",
+    "STL"
+  ],
+  "tools": [
+    "Git",
+    "GitHub",
+    "VS Code",
+    "Postman"
+  ],
+  "core": [
+    "Object Oriented Programming",
+    "API Integration",
+    "Problem Solving",
+    "Competitive Programming"
+  ],
+  "orbit": [
+    "React",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Git",
+    "GitHub",
+    "Tailwind",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Vite",
+    "TypeScript"
+  ]
+}

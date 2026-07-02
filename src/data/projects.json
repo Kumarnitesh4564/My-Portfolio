@@ -1,0 +1,59 @@
+[
+  {
+    "name": "Portfolio Website",
+    "type": "Personal Branding",
+    "image": "Premium hero-driven portfolio with 3D motion",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "features": [
+      "Responsive Design",
+      "Smooth Animations",
+      "Modern UI",
+      "Cross Device Compatibility"
+    ],
+    "github": "https://github.com/",
+    "live": "#",
+    "caseStudy": "#"
+  },
+  {
+    "name": "Weather Web App",
+    "type": "API Product",
+    "image": "Dynamic weather experience with live conditions",
+    "tech": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Weather API"
+    ],
+    "features": [
+      "Real-time Weather",
+      "Dynamic Updates",
+      "Responsive UI",
+      "API Integration"
+    ],
+    "github": "https://github.com/",
+    "live": "#",
+    "caseStudy": "#"
+  },
+  {
+    "name": "DSA Tracker",
+    "type": "Productivity Tool",
+    "image": "Structured question tracker with algorithm focus",
+    "tech": [
+      "C++",
+      "STL"
+    ],
+    "features": [
+      "Track solved questions",
+      "Topic-wise organization",
+      "Modular Design",
+      "Efficient STL implementation"
+    ],
+    "github": "https://github.com/",
+    "live": "#",
+    "caseStudy": "#"
+  }
+]
