@@ -22,7 +22,7 @@
 //     cy = 50 + 44 * sin(angle)             → y% from top
 
 import { motion } from 'framer-motion';
-import type { CSSProperties } from 'react';
+// CSSProperties import removed — x/y centering is now handled by Framer Motion style
 
 const ORBIT_DURATION = 35; // seconds for one full revolution
 
@@ -54,8 +54,18 @@ export function OrbitStack({ orbit }: { orbit: string[] }) {
               <motion.span
                 key={item}
                 className='orbit-pill'
-                style={{ left: `${cx}%`, top: `${cy}%` } as CSSProperties}
-                // Counter-rotate at the same speed → text stays upright
+                style={{
+                  // left/top: position the anchor point on the orbit circle
+                  left: `${cx}%`,
+                  top:  `${cy}%`,
+                  // x/y in Framer Motion style = translate.
+                  // These are COMPOSED with the rotate animation below —
+                  // unlike CSS `transform`, they do NOT get overwritten by it.
+                  // This correctly centers the pill on its anchor point at every angle.
+                  x: '-50%',
+                  y: '-50%',
+                }}
+                // Counter-rotate at the same speed as the parent ring (35s) → text stays upright
                 animate={{ rotate: -360 }}
                 transition={{ duration: ORBIT_DURATION, repeat: Infinity, ease: 'linear' }}
               >
