@@ -2,17 +2,14 @@
   {
     "name": "Portfolio Website",
     "type": "Personal Branding",
-    "image": "Premium hero-driven portfolio with 3D motion",
-    "tech": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
+    "image": "// Hero-driven portfolio\n// React + Three.js + GSAP\n// Smooth scroll · 3D scenes",
+    "gradient": ["#00E5FF", "#7C3AED"],
+    "tech": ["React", "TypeScript", "Three.js", "Framer Motion", "Tailwind CSS"],
     "features": [
-      "Responsive Design",
-      "Smooth Animations",
-      "Modern UI",
-      "Cross Device Compatibility"
+      "3D animated hero with React Three Fiber",
+      "Lenis smooth scroll throughout",
+      "Framer Motion section animations",
+      "Fully responsive glassmorphism UI"
     ],
     "github": "https://github.com/",
     "live": "#",
@@ -21,18 +18,14 @@
   {
     "name": "Weather Web App",
     "type": "API Product",
-    "image": "Dynamic weather experience with live conditions",
-    "tech": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Weather API"
-    ],
+    "image": "// Live weather dashboard\n// OpenWeather API\n// Dynamic conditions UI",
+    "gradient": ["#F59E0B", "#EF4444"],
+    "tech": ["HTML", "CSS", "JavaScript", "OpenWeather API"],
     "features": [
-      "Real-time Weather",
-      "Dynamic Updates",
-      "Responsive UI",
-      "API Integration"
+      "Real-time weather data from OpenWeather API",
+      "Dynamic background based on conditions",
+      "5-day forecast display",
+      "Responsive mobile-first design"
     ],
     "github": "https://github.com/",
     "live": "#",
@@ -41,16 +34,14 @@
   {
     "name": "DSA Tracker",
     "type": "Productivity Tool",
-    "image": "Structured question tracker with algorithm focus",
-    "tech": [
-      "C++",
-      "STL"
-    ],
+    "image": "// DSA progress tracker\n// Topic-wise organisation\n// C++ · STL internals",
+    "gradient": ["#10B981", "#3B82F6"],
+    "tech": ["C++", "STL", "Data Structures", "Algorithms"],
     "features": [
-      "Track solved questions",
-      "Topic-wise organization",
-      "Modular Design",
-      "Efficient STL implementation"
+      "Track solved problems by topic",
+      "Striver's DSA Sheet integration",
+      "Efficient STL-based implementation",
+      "Modular, extensible architecture"
     ],
     "github": "https://github.com/",
     "live": "#",

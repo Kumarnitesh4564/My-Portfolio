@@ -93,6 +93,76 @@ body::after { background: radial-gradient(circle at center, transparent 0, trans
 /* ── Button disabled state ──────────────────────────────────────────────────── */
 /* Prevents double-submit; dims button while EmailJS request is in flight. */
 button:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ── Project card: macOS-window thumbnail (Round 2) ─────────────────────────── */
+/* Each card image uses CSS vars --g1 / --g2 set inline from projects.json.
+   color-mix blends the accent colour with transparent to get a tinted panel. */
+.project-card__image {
+  min-height: 200px;
+  border-radius: 20px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--g1, #00E5FF) 22%, transparent),
+    color-mix(in srgb, var(--g2, #7C3AED) 28%, transparent));
+  position: relative;
+  overflow: hidden;
+}
+/* The inset "terminal window" panel */
+.project-card__window {
+  position: absolute;
+  inset: 12px;
+  border-radius: 14px;
+  background: rgba(3, 7, 18, 0.6);
+  border: 1px solid rgba(255,255,255,.08);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  backdrop-filter: blur(6px);
+}
+/* macOS traffic-light dots */
+.project-card__dots { display: flex; gap: 6px; }
+.dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+.dot--red    { background: #ff5f57; }
+.dot--yellow { background: #febc2e; }
+.dot--green  { background: #28c840; }
+/* "Code comment" text in JetBrains Mono — authored in projects.json image field */
+.project-card__code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .74rem;
+  color: rgba(255,255,255,.5);
+  line-height: 1.75;
+  margin: 0;
+  white-space: pre;
+}
+
+/* ── Skill chips with icons (Round 2) ───────────────────────────────────────── */
+/* .chip wraps the icon + text, flex-row so they sit side by side.
+   Already in chip-list so inherits border/padding/background. */
+.chip-list span { display: inline-flex; align-items: center; gap: 6px; }
+.chip__icon { display: flex; align-items: center; font-size: .92em; opacity: 0.75; flex-shrink: 0; }
+
+/* ── Scroll-to-top button (Round 2) ─────────────────────────────────────────── */
+/* Fixed bottom-right, gradient circle, appears/disappears via AnimatePresence.
+   z-index 90 — below cursor (200) and loader (100) but above page content. */
+.scroll-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 90;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--cyan), var(--violet));
+  border: none;
+  color: #03101a;
+  font-size: 1.25rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 0 36px rgba(0,229,255,.35), 0 8px 24px rgba(0,0,0,.4);
+  transition: box-shadow 0.2s;
+}
+.scroll-top:hover { box-shadow: 0 0 48px rgba(0,229,255,.55), 0 12px 32px rgba(0,0,0,.5); }
 .project-card__overlay { position: absolute; inset: 0; display: grid; place-items: end start; padding: 18px; color: rgba(255,255,255,.88); font-family: 'JetBrains Mono', monospace; }
 .project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .profile-card { display: grid; gap: 12px; min-height: 210px; }
