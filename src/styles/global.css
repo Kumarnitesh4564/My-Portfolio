@@ -25,7 +25,9 @@ body::after { background: radial-gradient(circle at center, transparent 0, trans
 .section__heading h2, .hero h1 { font-family: 'Space Grotesk', sans-serif; }
 .section__heading h2 { font-size: clamp(2rem, 4vw, 4rem); margin: 10px 0 0; }
 .glass { background: var(--panel); border: 1px solid var(--border); backdrop-filter: blur(20px); box-shadow: 0 20px 80px rgba(0,0,0,.35); }
-.navbar { position: sticky; top: 16px; z-index: 50; width: min(1180px, calc(100% - 32px)); margin: 16px auto 0; padding: 16px 18px; display: flex; gap: 18px; align-items: center; justify-content: space-between; border: 1px solid var(--border); border-radius: 24px; background: rgba(3, 7, 18, 0.55); backdrop-filter: blur(24px); }
+.navbar { position: sticky; top: 16px; z-index: 50; width: min(1180px, calc(100% - 32px)); margin: 16px auto 0; padding: 16px 18px; display: flex; gap: 18px; align-items: center; justify-content: space-between; border: 1px solid var(--border); border-radius: 24px; background: rgba(3, 7, 18, 0.55); backdrop-filter: blur(24px);
+  /* position:relative needed so .navbar__mobile (absolute) is anchored to the navbar bar */
+  position: relative; }
 .navbar__brand { font-weight: 800; letter-spacing: .08em; }
 .navbar__links { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); font-size: .92rem; }
 .navbar__links a:hover, .contact-links a:hover, .project-actions a:hover, .profile-card a:hover { color: var(--cyan); }
@@ -57,8 +59,40 @@ body::after { background: radial-gradient(circle at center, transparent 0, trans
 .orbit-section { text-align: center; }
 .orbit-shell { position: relative; width: min(640px, 100%); aspect-ratio: 1; margin: 28px auto 0; border-radius: 50%; border: 1px solid rgba(255,255,255,.08); background: radial-gradient(circle, rgba(0,229,255,.12), transparent 48%); }
 .orbit-core { position: absolute; inset: 50%; translate: -50% -50%; width: 180px; height: 180px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, rgba(0,229,255,.24), rgba(124,58,237,.2)); border: 1px solid rgba(255,255,255,.16); font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; }
-.orbit-pill { position: absolute; left: 50%; top: 50%; transform: rotate(var(--angle)) translateY(-250px) rotate(calc(var(--angle) * -1)); transform-origin: center; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); }
-.project-card__image { min-height: 190px; border-radius: 20px; background: linear-gradient(135deg, rgba(0,229,255,.18), rgba(124,58,237,.22)); position: relative; overflow: hidden; }
+/* orbit-ring: the invisible rotating container that carries all pills around the orbit */
+.orbit-ring { position: absolute; inset: 0; border-radius: 50%; }
+/* orbit-pill: each pill is placed via inline left/top% (set in OrbitStack.tsx).
+   transform: translate(-50%,-50%) centres the pill on its calculated anchor point.
+   Framer Motion then counter-rotates the pill -360° at the same speed as the ring,
+   so the text inside always stays upright and readable. */
+.orbit-pill { position: absolute; transform: translate(-50%, -50%); padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.1); font-size: .82rem; white-space: nowrap; }
+/* ── Navbar: active link indicator ─────────────────────────────────────────── */
+/* .nav-active is toggled by IntersectionObserver in Navbar.tsx when the
+   corresponding section is in the viewport. Uses cyan color + underline. */
+.navbar__links a.nav-active { color: var(--cyan); }
+.navbar__links a { position: relative; transition: color 0.2s; }
+.navbar__links a.nav-active::after { content: ''; position: absolute; bottom: -3px; left: 0; right: 0; height: 1px; background: var(--cyan); border-radius: 1px; }
+
+/* ── Navbar: hamburger button (mobile only) ─────────────────────────────────── */
+/* Hidden on desktop. The media query below reveals it at ≤1080px. */
+.hamburger { display: none; }
+
+/* ── Navbar: mobile slide-down drawer ───────────────────────────────────────── */
+/* Positioned absolutely below the navbar bar; full-width, column links.
+   AnimatePresence in Navbar.tsx handles fade+slide on open/close. */
+.navbar__mobile { position: absolute; top: calc(100% + 10px); left: 0; right: 0; border-radius: 20px; border: 1px solid var(--border); background: rgba(3,7,18,0.90); backdrop-filter: blur(24px); padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; font-size: .95rem; color: var(--muted); }
+.navbar__mobile a.nav-active { color: var(--cyan); }
+
+/* ── Contact form: submission feedback ──────────────────────────────────────── */
+/* Shown below the Send button after form submission succeeds or fails. */
+.form-feedback { font-size: .9rem; border-radius: 14px; padding: 12px 16px; margin: 0; }
+.form-feedback--success { background: rgba(0,229,100,.08); border: 1px solid rgba(0,229,100,.2); color: #4ade80; }
+.form-feedback--error   { background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.2); color: #f87171; }
+.form-feedback--error a { color: var(--cyan); text-decoration: underline; }
+
+/* ── Button disabled state ──────────────────────────────────────────────────── */
+/* Prevents double-submit; dims button while EmailJS request is in flight. */
+button:disabled { opacity: 0.55; cursor: not-allowed; }
 .project-card__overlay { position: absolute; inset: 0; display: grid; place-items: end start; padding: 18px; color: rgba(255,255,255,.88); font-family: 'JetBrains Mono', monospace; }
 .project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .profile-card { display: grid; gap: 12px; min-height: 210px; }
@@ -81,7 +115,10 @@ body::after { background: radial-gradient(circle at center, transparent 0, trans
 .page-flash { position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at center, rgba(0,229,255,.06), transparent 60%); }
 @media (max-width: 1080px) {
   .hero, .about__grid, .contact-grid, .grid.cards, .skills-grid, .project-grid, .profiles-grid, .achievement-grid, .navbar { grid-template-columns: 1fr; flex-direction: column; }
-  .navbar__links, .navbar__actions { justify-content: center; }
+  /* On mobile, hide the desktop inline nav links and show the hamburger instead */
+  .navbar__links { display: none; }
+  .navbar__actions { justify-content: center; }
+  .hamburger { display: inline-flex; } /* reveal hamburger button */
   .hero { min-height: auto; }
 }
 @media (max-width: 720px) {
@@ -89,5 +126,5 @@ body::after { background: radial-gradient(circle at center, transparent 0, trans
   .hero h1 { font-size: clamp(2.9rem, 15vw, 4.2rem); }
   .field-row { grid-template-columns: 1fr; }
   .footer { flex-direction: column; }
-  .orbit-pill { transform: rotate(var(--angle)) translateY(-200px) rotate(calc(var(--angle) * -1)); }
+  /* On smaller screens the orbit radius shrinks naturally with the % positioning */
 }

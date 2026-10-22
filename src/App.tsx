@@ -1,4 +1,12 @@
+// ─── Lenis smooth scroll ──────────────────────────────────────────────────────
+// Lenis was installed (package.json) but never initialised — so it was doing
+// nothing. We import it here and start it inside useEffect so it runs once
+// after the component mounts. `autoRaf: true` means Lenis manages its own
+// requestAnimationFrame loop internally; no manual raf setup needed.
+// The cleanup `lenis.destroy()` removes all event listeners on unmount.
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Lenis from 'lenis';
 import profile from './data/profile.json';
 import projects from './data/projects.json';
 import skills from './data/skills.json';
@@ -18,6 +26,22 @@ import { Footer } from './components/Footer';
 import { Education } from './components/Education';
 
 export default function App() {
+  useEffect(() => {
+    // duration: 1.2s scroll animation, easing: exponential decay (feels natural)
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
   return (
     <Loader>
       <Cursor />
