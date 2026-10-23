@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { Float, Environment, Sparkles } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { FiGithub, FiMail, FiDownload } from 'react-icons/fi';
+import { FiGithub, FiMail, FiDownload, FiEye } from 'react-icons/fi';
 import { useMemo } from 'react';
 import * as THREE from 'three';
 
@@ -47,10 +47,11 @@ export function Hero({ profile }: { profile: any }) {
       </motion.p>
       <div className='hero__tags'>{profile.tags.map((tag: string) => <span key={tag}>{tag}</span>)}</div>
       <div className='hero__actions'>
-        {/* `download` attribute triggers file download instead of navigation.
-            Changed icon to FiDownload — semantically matches the action. */}
-        <a className='cta primary' href={profile.resumeUrl} download>
-          <FiDownload /> Download Resume
+        {/* Hero button → VIEW resume in a new browser tab (PDF opens inline).
+            NO `download` attribute here — that's only on the Navbar "Resume" button.
+            `target="_blank"` → new tab | `rel="noreferrer"` → security best practice */}
+        <a className='cta primary' href={profile.resumeUrl} target='_blank' rel='noreferrer'>
+          <FiEye /> View Resume
         </a>
         <a className='cta secondary' href='#projects'>View Projects</a>
         <a className='cta ghost' href={'mailto:' + profile.email}><FiMail /> Hire Me</a>
